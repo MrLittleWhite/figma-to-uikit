@@ -11,7 +11,7 @@ Produce maintainable UIKit, not a screenshot disguised as a screen. Use the same
 
 - Identify the Figma URL/node selection or local JSON and the destination project/output directory. Ask for missing input, not every possible preference.
 - Read destination project instructions first. Inspect nearby view controllers, layout conventions, deployment target, navigation, assets, typography, localization and existing reusable components. Reuse them rather than adding a parallel design system.
-- Default for a new standalone output: Swift, UIKit, native layout anchors, no third-party runtime dependency. Do not silently introduce SwiftUI, SnapKit, packages, or modify the Xcode project.
+- Prefer Swift + UIKit with SnapKit for Auto Layout in authored or project-adapted code. Reuse the destination's existing SnapKit dependency and conventions. If SnapKit is absent, explain the dependency and obtain approval before adding packages or modifying the Xcode project; if dependencies are prohibited or project rules require otherwise, fall back to native anchors and state the reason. Do not silently introduce SwiftUI.
 - New code should remain in a separate generated directory until integration is reviewed. Do not overwrite handwritten code or edited generated files.
 
 ## 2. Acquire evidence (read-only Figma)
@@ -43,7 +43,7 @@ Generate into a dedicated output directory with the offline CLI. Read its manife
 
 Follow [UIKit rules](references/uikit-rules.md):
 - Thin UIViewController and a separate root UIView; reuse existing components and navigation.
-- Native anchors for supported geometry; use UIStackView only when its semantics match Figma's layout.
+- Prefer SnapKit (`import SnapKit`, `view.snp.makeConstraints`) for Auto Layout when authoring or adapting UIKit code. The offline CLI currently emits native anchors without a SnapKit dependency; convert constraints during project adaptation when SnapKit is available, preserving geometry, priorities and responsive behavior, and remove replaced anchors to avoid duplicate constraints. Use UIStackView only when its semantics match Figma's layout.
 - Preserve freeform offsets where necessary and state their responsiveness limitations.
 - Do not move edge-to-edge content inside safe areas without evidence.
 - UILabel/attributed text, explicit UIButton/UITextField semantics, UIImageView and UIScrollView as appropriate.
