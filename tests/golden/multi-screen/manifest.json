@@ -1,0 +1,60 @@
+{
+  "assets": [
+    "logo.png"
+  ],
+  "diagnostics": [
+    {
+      "code": "assets-not-packaged",
+      "level": "warning",
+      "message": "Supply --assets-dir to package local image resources."
+    },
+    {
+      "code": "external-interaction-destination",
+      "level": "warning",
+      "message": "Destination is outside this capture: not-captured",
+      "node_id": "outside"
+    }
+  ],
+  "files": [
+    "DesignTokens.swift",
+    "HomeRootView.swift",
+    "HomeViewController.swift",
+    "Home_702f965df9d15afc0b7240a8a427d4ca06258b19f90533d5a2919c1580530d33RootView.swift",
+    "Home_702f965df9d15afc0b7240a8a427d4ca06258b19f90533d5a2919c1580530d33ViewController.swift",
+    "Home_e704222f72c924353a6b272a9304b4e555f8e834988a1e32a8c08d39bdf0e6abRootView.swift",
+    "Home_e704222f72c924353a6b272a9304b4e555f8e834988a1e32a8c08d39bdf0e6abViewController.swift",
+    "Interactions.swift",
+    "NodeRootView.swift",
+    "NodeViewController.swift",
+    "Node_39e35e4e0657a17586045bc9e9476e5504d8e49b85aa1c879bda136c802408f7RootView.swift",
+    "Node_39e35e4e0657a17586045bc9e9476e5504d8e49b85aa1c879bda136c802408f7ViewController.swift"
+  ],
+  "generator": "figma-to-uikit/1",
+  "screens": [
+    {
+      "controller": "HomeViewController.swift",
+      "node_id": "screen-1",
+      "view": "HomeRootView.swift"
+    },
+    {
+      "controller": "Home_e704222f72c924353a6b272a9304b4e555f8e834988a1e32a8c08d39bdf0e6abViewController.swift",
+      "node_id": "screen-2",
+      "view": "Home_e704222f72c924353a6b272a9304b4e555f8e834988a1e32a8c08d39bdf0e6abRootView.swift"
+    },
+    {
+      "controller": "Home_702f965df9d15afc0b7240a8a427d4ca06258b19f90533d5a2919c1580530d33ViewController.swift",
+      "node_id": "screen-3",
+      "view": "Home_702f965df9d15afc0b7240a8a427d4ca06258b19f90533d5a2919c1580530d33RootView.swift"
+    },
+    {
+      "controller": "NodeViewController.swift",
+      "node_id": "screen-4",
+      "view": "NodeRootView.swift"
+    },
+    {
+      "controller": "Node_39e35e4e0657a17586045bc9e9476e5504d8e49b85aa1c879bda136c802408f7ViewController.swift",
+      "node_id": "screen-5",
+      "view": "Node_39e35e4e0657a17586045bc9e9476e5504d8e49b85aa1c879bda136c802408f7RootView.swift"
+    }
+  ]
+}

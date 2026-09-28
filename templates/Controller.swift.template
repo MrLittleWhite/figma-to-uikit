@@ -1,0 +1,9 @@
+import UIKit
+
+final class ${controller_name}: UIViewController {
+    private let contentView = ${view_name}()
+${callback}
+    override func loadView() {
+        view = contentView
+    }
+}

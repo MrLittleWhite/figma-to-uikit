@@ -1,0 +1,96 @@
+{
+  "id": "auto:root",
+  "type": "FRAME",
+  "name": "Auto Layout Example",
+  "bounds": {
+    "x": 100,
+    "y": 200,
+    "width": 390,
+    "height": 844
+  },
+  "children": [
+    {
+      "id": "auto:row",
+      "type": "FRAME",
+      "name": "auto:row",
+      "bounds": {
+        "x": 124,
+        "y": 240,
+        "width": 342,
+        "height": 240
+      },
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 10,
+      "paddingRight": 20,
+      "paddingBottom": 30,
+      "paddingLeft": 40,
+      "itemSpacing": 12,
+      "children": [
+        {
+          "id": "auto:c",
+          "type": "RECTANGLE",
+          "name": "auto:c",
+          "bounds": {
+            "x": 100,
+            "y": 200,
+            "width": 60,
+            "height": 40
+          }
+        },
+        {
+          "id": "auto:nested",
+          "type": "FRAME",
+          "name": "auto:nested",
+          "bounds": {
+            "x": 100,
+            "y": 200,
+            "width": 120,
+            "height": 180
+          },
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "paddingTop": 10,
+          "paddingRight": 20,
+          "paddingBottom": 30,
+          "paddingLeft": 40,
+          "itemSpacing": 12,
+          "children": [
+            {
+              "id": "auto:a",
+              "type": "RECTANGLE",
+              "name": "auto:a",
+              "bounds": {
+                "x": 100,
+                "y": 200,
+                "width": 30,
+                "height": 20
+              }
+            },
+            {
+              "id": "auto:b",
+              "type": "RECTANGLE",
+              "name": "auto:b",
+              "bounds": {
+                "x": 100,
+                "y": 200,
+                "width": 50,
+                "height": 40
+              }
+            }
+          ],
+          "primaryAxisAlignItems": "MAX",
+          "counterAxisAlignItems": "CENTER"
+        }
+      ],
+      "primaryAxisAlignItems": "CENTER",
+      "counterAxisAlignItems": "MAX",
+      "constraints": {
+        "horizontal": "STRETCH",
+        "vertical": "MIN"
+      }
+    }
+  ]
+}

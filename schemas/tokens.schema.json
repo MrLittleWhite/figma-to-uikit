@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Observed design values",
+  "description": "Deduplicated capture values, not resolved Figma variable aliases or modes.",
+  "type": "object",
+  "required": ["version", "colors", "fonts", "spacing", "radii"],
+  "properties": {
+    "version": {"const": 1},
+    "colors": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"}},
+    "fonts": {"type": "object", "additionalProperties": {"type": "string"}},
+    "spacing": {"type": "object", "additionalProperties": {"type": "number"}},
+    "radii": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}}
+  }
+}

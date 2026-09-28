@@ -1,0 +1,44 @@
+{
+  "id": "responsive:screen",
+  "type": "FRAME",
+  "name": "Responsive Example",
+  "absoluteBoundingBox": {"x": 100, "y": 200, "width": 390, "height": 844},
+  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
+  "children": [
+    {
+      "id": "responsive:header",
+      "type": "RECTANGLE",
+      "name": "Stretch Header",
+      "absoluteBoundingBox": {"x": 124, "y": 240, "width": 342, "height": 80},
+      "constraints": {"horizontal": "STRETCH", "vertical": "MIN"},
+      "fills": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.94, "b": 1}}],
+      "children": []
+    },
+    {
+      "id": "responsive:center",
+      "type": "RECTANGLE",
+      "name": "Centered Badge",
+      "absoluteBoundingBox": {"x": 265, "y": 592, "width": 60, "height": 60},
+      "constraints": {"horizontal": "CENTER", "vertical": "CENTER"},
+      "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.4, "b": 0.8}}],
+      "children": []
+    },
+    {
+      "id": "responsive:scale",
+      "type": "RECTANGLE",
+      "name": "Proportional Panel",
+      "absoluteBoundingBox": {"x": 139, "y": 368.8, "width": 117, "height": 168.8},
+      "constraints": {"horizontal": "SCALE", "vertical": "SCALE"},
+      "fills": [{"type": "SOLID", "color": {"r": 0.8, "g": 0.9, "b": 0.85}}],
+      "children": []
+    },
+    {
+      "id": "responsive:footer",
+      "type": "BUTTON",
+      "name": "Continue",
+      "absoluteBoundingBox": {"x": 346, "y": 968, "width": 120, "height": 44},
+      "constraints": {"horizontal": "MAX", "vertical": "MAX"},
+      "children": []
+    }
+  ]
+}

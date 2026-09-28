@@ -1,0 +1,427 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Figma UIKit IR",
+  "type": "object",
+  "required": [
+    "ir_version",
+    "root"
+  ],
+  "properties": {
+    "ir_version": {
+      "const": "figma-uikit-ir/1"
+    },
+    "root": {
+      "$ref": "#/$defs/node"
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "level",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "level": {
+            "enum": [
+              "warning",
+              "error",
+              "info"
+            ]
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "string"
+          },
+          "asset_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tokens": {
+      "$ref": "tokens.schema.json"
+    },
+    "interactions": {
+      "$ref": "interactions.schema.json"
+    }
+  },
+  "$defs": {
+    "interaction": {
+      "type": "object",
+      "required": [
+        "trigger",
+        "action",
+        "destination"
+      ],
+      "properties": {
+        "trigger": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "bounds",
+        "children"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "bounds": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "constraints": {
+          "description": "Optional captured Figma constraints. Missing axes default to MIN. Applies relative to the captured immediate parent; generated screen roots have no parent constraints. SCALE with zero parent extent falls back to fixed MIN geometry with a diagnostic. Derived geometry must remain finite. Supported layout v1 flow takes precedence over these constraints.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "horizontal": {
+              "enum": [
+                "MIN",
+                "MAX",
+                "CENTER",
+                "STRETCH",
+                "SCALE"
+              ]
+            },
+            "vertical": {
+              "enum": [
+                "MIN",
+                "MAX",
+                "CENTER",
+                "STRETCH",
+                "SCALE"
+              ]
+            }
+          }
+        },
+        "style": {
+          "type": "object",
+          "properties": {
+            "fill": {
+              "type": "string",
+              "pattern": "^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+            },
+            "corner_radius": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "text": {
+          "type": "object",
+          "required": [
+            "value",
+            "font_size"
+          ],
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "font_size": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "font_family": {
+              "type": "string"
+            },
+            "color": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+                }
+              ]
+            }
+          }
+        },
+        "asset": {
+          "type": "object",
+          "required": [
+            "ref",
+            "format"
+          ],
+          "properties": {
+            "ref": {
+              "type": "string"
+            },
+            "format": {
+              "type": "string"
+            }
+          }
+        },
+        "interactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interaction"
+          }
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "layout": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string"
+                },
+                "padding": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "item_spacing": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "version"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "version": {
+                  "type": "integer",
+                  "const": 1
+                },
+                "mode": {
+                  "type": "string"
+                },
+                "primary_sizing": {
+                  "enum": [
+                    "AUTO",
+                    "FILL",
+                    "FIXED",
+                    "HUG",
+                    "UNKNOWN"
+                  ]
+                },
+                "counter_sizing": {
+                  "enum": [
+                    "AUTO",
+                    "FILL",
+                    "FIXED",
+                    "HUG",
+                    "UNKNOWN"
+                  ]
+                },
+                "primary_align": {
+                  "enum": [
+                    "CENTER",
+                    "MAX",
+                    "MIN",
+                    "SPACE_BETWEEN"
+                  ]
+                },
+                "counter_align": {
+                  "enum": [
+                    "BASELINE",
+                    "CENTER",
+                    "MAX",
+                    "MIN"
+                  ]
+                },
+                "wrap": {
+                  "enum": [
+                    "NO_WRAP",
+                    "WRAP"
+                  ]
+                },
+                "item_spacing": {
+                  "type": "number"
+                },
+                "stroke_inclusive": {
+                  "type": "boolean"
+                },
+                "reverse_stacking": {
+                  "type": "boolean"
+                },
+                "padding": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "top",
+                    "right",
+                    "bottom",
+                    "left"
+                  ],
+                  "properties": {
+                    "top": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "right": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "bottom": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "left": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "layout_item": {
+          "type": "object",
+          "required": [
+            "version"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "version": {
+              "type": "integer",
+              "const": 1
+            },
+            "horizontal_sizing": {
+              "enum": [
+                "FILL",
+                "FIXED",
+                "HUG",
+                "UNKNOWN"
+              ]
+            },
+            "vertical_sizing": {
+              "enum": [
+                "FILL",
+                "FIXED",
+                "HUG",
+                "UNKNOWN"
+              ]
+            },
+            "grow": {
+              "type": "number",
+              "minimum": 0
+            },
+            "align": {
+              "enum": [
+                "CENTER",
+                "INHERIT",
+                "MAX",
+                "MIN",
+                "STRETCH"
+              ]
+            },
+            "positioning": {
+              "enum": [
+                "ABSOLUTE",
+                "AUTO"
+              ]
+            },
+            "min_width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max_width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "min_height": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max_height": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "TEXT"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "text"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "description": "Numeric values must also be finite and representable as binary64 at runtime; child-parent coordinate differences must be representable. Node ids must be unique. Names are optional; generation uses safe fallback names."
+}

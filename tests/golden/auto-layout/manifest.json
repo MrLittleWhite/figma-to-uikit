@@ -1,0 +1,18 @@
+{
+  "assets": [],
+  "diagnostics": [],
+  "files": [
+    "AutoLayoutExampleRootView.swift",
+    "AutoLayoutExampleViewController.swift",
+    "DesignTokens.swift",
+    "Interactions.swift"
+  ],
+  "generator": "figma-to-uikit/1",
+  "screens": [
+    {
+      "controller": "AutoLayoutExampleViewController.swift",
+      "node_id": "auto:root",
+      "view": "AutoLayoutExampleRootView.swift"
+    }
+  ]
+}

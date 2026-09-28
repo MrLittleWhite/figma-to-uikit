@@ -1,0 +1,31 @@
+{
+  "document": {
+    "id": "doc", "type": "DOCUMENT", "name": "Product",
+    "children": [{
+      "id": "canvas", "type": "CANVAS", "name": "Screens",
+      "children": [{
+        "id": "section", "type": "SECTION", "name": "Flow",
+        "children": [
+          {
+            "id": "screen-1", "type": "FRAME", "name": "Home",
+            "bounds": {"x": 100, "y": 200, "width": 390, "height": 844},
+            "fills": [{"color": {"r": 1, "g": 1, "b": 1}}],
+            "children": [{
+              "id": "panel", "type": "FRAME", "name": "Nested panel",
+              "bounds": {"x": 116, "y": 224, "width": 358, "height": 200},
+              "children": [
+                {"id": "title", "type": "TEXT", "name": "Title", "characters": "你好 Home", "bounds": {"x": 128, "y": 240, "width": 200, "height": 24}},
+                {"id": "next", "type": "BUTTON", "name": "Next", "bounds": {"x": 128, "y": 280, "width": 120, "height": 44}, "reactions": [{"trigger": {"type": "ON_CLICK"}, "action": {"type": "NODE", "destinationId": "screen-2"}}]},
+                {"id": "logo", "type": "IMAGE", "imageRef": "logo.png", "bounds": {"x": 300, "y": 240, "width": 32, "height": 32}}
+              ]
+            }]
+          },
+          {"id": "screen-2", "type": "FRAME", "name": "Home", "bounds": {"x": 600, "y": 200, "width": 390, "height": 844}},
+          {"id": "screen-3", "type": "FRAME", "name": "home", "children": [{"id": "outside", "type": "RECTANGLE", "reactions": [{"trigger": "ON_CLICK", "action": {"type": "NODE", "destinationId": "not-captured"}}]}]},
+          {"id": "screen-4", "type": "FRAME", "name": "首页"},
+          {"id": "screen-5", "type": "FRAME", "name": "设置"}
+        ]
+      }]
+    }]
+  }
+}

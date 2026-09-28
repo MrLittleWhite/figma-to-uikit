@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Xcode local state and build outputs
+DerivedData/
+build/
+*.xcresult/
+xcuserdata/
+*.xcuserstate

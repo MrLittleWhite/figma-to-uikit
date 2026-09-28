@@ -1,0 +1,32 @@
+import UIKit
+
+final class ${view_name}: UIView {
+${declarations}
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = ${background}
+        setupUI()
+        setupConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupUI()
+        setupConstraints()
+    }
+    
+    func setupUI() {
+${setup}
+    }
+    
+    func setupConstraints() {
+${constraints}
+    }
+
+    // MARK: - event
+
+${handlers}
+
+    
+}

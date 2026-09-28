@@ -1,0 +1,10 @@
+{
+  "id": "smoke:asset-screen", "type": "FRAME", "name": "Asset Example",
+  "absoluteBoundingBox": {"x": 0, "y": 0, "width": 390, "height": 844},
+  "children": [{
+    "id": "smoke:image", "type": "IMAGE", "name": "Smoke Image",
+    "imageRef": "smoke.png", "format": "png",
+    "absoluteBoundingBox": {"x": 24, "y": 40, "width": 32, "height": 48},
+    "children": []
+  }]
+}

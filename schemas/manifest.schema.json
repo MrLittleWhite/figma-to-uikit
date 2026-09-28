@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UIKit generation manifest",
+  "type": "object",
+  "required": ["generator", "files", "assets", "diagnostics", "screens"],
+  "properties": {
+    "generator": {"const": "figma-to-uikit/1"},
+    "files": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "assets": {"type": "array", "items": {"type": "string"}},
+    "diagnostics": {"type": "array", "items": {"type": "object", "required": ["level", "code", "message"], "properties": {"level": {"enum": ["info", "warning", "error"]}, "code": {"type": "string"}, "message": {"type": "string"}}}},
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "controller", "view"],
+        "additionalProperties": false,
+        "properties": {
+          "node_id": {"type": "string", "minLength": 1},
+          "controller": {"type": "string", "pattern": "^[A-Za-z0-9_]+\\.swift$"},
+          "view": {"type": "string", "pattern": "^[A-Za-z0-9_]+\\.swift$"}
+        }
+      }
+    }
+  }
+}
